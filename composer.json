@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.7"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.12",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "mockery/mockery": "^1.4.4",
@@ -44,6 +45,13 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "update-ide": [
+            "@php artisan clear-compiled",
+            "@php artisan ide-helper:generate -n",
+            "@php artisan ide-helper:eloquent -n",
+            "@php artisan ide-helper:meta -n",
+            "@php artisan ide-helper:models -MNn"
         ]
     },
     "extra": {
