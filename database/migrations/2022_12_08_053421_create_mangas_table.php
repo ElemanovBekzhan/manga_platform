@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('mangas', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\User::class, 'owner_id');
+            $table->text('description');
+            $table->foreignIdFor(\App\Models\Genre::class, 'name_genre');
+            $table->comment('comment');
 
-            $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('mangas');
     }
 };
