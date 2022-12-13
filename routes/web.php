@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\MangaController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,7 +15,13 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function (){
     Route::get('/', [MainController::class, 'index'])->name('home');
-    Route::get('/profile', [MainController::class, 'index'])->name('profile');
+    Route::get('/profile', [MainController::class, 'index2'])->name('profile');
     Route::get('/logout', [MainController::class, 'logout'])->name('auth.logout');
+    Route::get('/catalog', [MainController::class, 'catalog'])->name('catalog');
 
+
+    Route::prefix('/mangas')->name('mangas.')->group(function (){
+        Route::get('/upload', [MangaController::class, 'create'])->name('create');
+    });
 });
+

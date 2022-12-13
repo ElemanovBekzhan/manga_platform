@@ -1,7 +1,9 @@
 <x-layouts.app>
 
 
-    <x-manga></x-manga>
+    <x-profile>
+
+    </x-profile>
 
 
 </x-layouts.app>

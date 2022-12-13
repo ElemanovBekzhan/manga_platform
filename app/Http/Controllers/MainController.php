@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,6 +28,10 @@ class MainController extends Controller
         return view('home');
     }
 
+    public function index2(): Factory|View|Application
+    {
+        return view('profile');
+    }
 
     public function login(Request $request): View
     {
@@ -63,5 +69,16 @@ class MainController extends Controller
     {
         \Auth::logout();
         return to_route('auth.logout');
+    }
+
+
+    public function profile(): Factory|View|Application
+    {
+        return view('profile');
+    }
+
+    public function catalog(): Factory|View|Application
+    {
+        return view('home');
     }
 }
