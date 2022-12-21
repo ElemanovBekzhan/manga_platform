@@ -54,15 +54,22 @@ class MainController extends Controller
         return to_route('home');
     }
 
-    public function registration(): RedirectResponse
+    public function registration(Request $request): RedirectResponse
     {
+        #$ipAddress = $request->ip();
         $user = (new \App\Models\User)->create([
             'username'=>$this->request->get('username'),
             'email'=>$this->request->get('email'),
             'password'=>Hash::make($this->request->get('password'))
+
+        ]);
+        $user->information()->create([
+            'username'=>$request->get('username'),
+            #$ipAddress=>$request->get('ip_address')
         ]);
         \Auth::login($user);
         return to_route('home');
+
     }
 
     public function logout(): RedirectResponse
@@ -80,5 +87,10 @@ class MainController extends Controller
     public function catalog(): Factory|View|Application
     {
         return view('home');
+    }
+
+    public function read(): Factory|View|Application
+    {
+        return view('read');
     }
 }

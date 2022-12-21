@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @mixin IdeHelperGenre
@@ -16,8 +17,8 @@ class Genre extends Model
 
     public $timestamps = false;
 
-    public function posts(): BelongsToMany
+    public function manga(): HasMany
     {
-        return $this->belongsToMany(Manga::class,'genre','genre_id','manga_id');
+       return $this->hasMany(Manga::class,);
     }
 }

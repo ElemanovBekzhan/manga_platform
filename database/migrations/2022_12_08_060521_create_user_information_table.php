@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('user_information', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class, 'user_id');
-            $table->string('name')->nullable();
+            $table->string('username')->nullable();
             $table->ipAddress()->nullable();
             $table->timestamps();
         });

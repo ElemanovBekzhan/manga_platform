@@ -10,7 +10,7 @@
                 <h1 class="sr-only ">Каталог</h1>
 
                 <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    <a href="#" class="group">
+                    <a href="{{ route('read') }}" class="group">
                         <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                             <img src="https://mangalib.me/uploads/cover/bil-eomeogeul-hwansaeng/cover/RiHuUZyWa3d7_250x350.jpg" alt="" class="h-full w-full object-cover object-center group-hover:opacity-75">
                         </div>

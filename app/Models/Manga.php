@@ -14,22 +14,24 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Manga extends Model
 {
     use HasFactory;
+    protected $fillable = [];
+    protected $guarded=[];
 
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function photos(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function photo(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Photo::class);
     }
 
-    public function genres(): BelongsToMany
+    public function genre(): BelongsToMany
     {
         return $this->belongsToMany(
             Genre::class,
-            'genre_post',
+            'genre',
             'manga_id',
             'genre_id'
         );
@@ -44,6 +46,12 @@ class Manga extends Model
     {
         return $this->belongsToMany(User::class, 'likes', 'manga_id', 'user_id');
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_id','user_id');
+    }
+
 
 
 }

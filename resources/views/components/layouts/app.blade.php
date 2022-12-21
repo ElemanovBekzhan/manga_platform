@@ -38,6 +38,7 @@
             </div>
 
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20" id="nav-content">
+
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
                     @php
                         $current_route = Route::currentRouteName();
@@ -61,12 +62,16 @@
                             <a class="inline-block no-underline py-2 px-4 @if($current_route === 'mangas.create') text-gray-600 font-bold @endif" href="{{route('mangas.create')}}">Загрузить</a>
                         </li>
                         <li class="mr-3">
+                            <a class="inline-block no-underline py-2 px-4 @if($current_route === 'genre') text-gray-600 font-bold @endif" href="{{route('genre_load')}}">Жанры</a>
+                        </li>
+                        <li class="mr-3">
                             <a class="inline-block no-underline py-2 px-4 text-gray-600 font-bold " href="{{route('auth.logout')}}">Выйти</a>
                         </li>
                         </li>
 
                         @endauth
             </ul>
+
         </div>
     </div>
 </nav>

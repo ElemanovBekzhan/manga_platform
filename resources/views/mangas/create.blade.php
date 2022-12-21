@@ -1,12 +1,41 @@
 <x-layouts.app>
-    <div class="flex items-center justify-center w-full">
-        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+    <form method="POST" enctype="multipart/form-data" action="{{ url("/mangas/upload") }}">
+        @csrf
+        <label for ="image">Image:</label>
+        <input type="file" id="image" name="image">
+        <div class="-space-y-px rounded-md shadow-sm">
+
+            <div>
+                <label class="sr-only">Name manga</label>
+                <input name="manga_name" type="text" required class="relative block w-full appearance-none rounded-none
+                 rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10
+                 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                       placeholder="Название манги">
             </div>
-            <input id="dropzone-file" type="file" class="hidden" />
-        </label>
-    </div>
+
+            <div>
+                <label class="sr-only">Description</label>
+                <input name="description" type="text" required class="relative block w-full appearance-none rounded-none
+                 rounded-b-md  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10
+                 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                       placeholder="Описание">
+            </div>
+
+            <!---<div>
+                <label class="sr-only">Genre</label>
+                <input name="genre" type="text" required class="relative block w-full appearance-none rounded-none
+                rounded-b-md  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10
+                focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                       placeholder="Жанр">
+            </div>-->
+        </div>
+
+        <div>
+            <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent
+             bg-gray-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2
+             focus:ring-indigo-500 focus:ring-offset-2">
+                Загрузить
+            </button>
+        </div>
+    </form>
 </x-layouts.app>
