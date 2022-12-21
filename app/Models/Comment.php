@@ -19,7 +19,7 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function post()
+    public function manga(): BelongsTo
     {
         return $this->belongsTo(Manga::class);
     }

@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->uuid()->index();
-            $table->foreignIdFor(\App\Models\Manga::class, 'manga_id');
+            $table->string('title');
+            $table->string('image');
+            $table->timestamps();
         });
     }
 

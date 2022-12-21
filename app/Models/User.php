@@ -31,7 +31,7 @@ class User extends Authenticatable
         return $this->hasOne(UserInformation::class);
     }
 
-    public function post(): HasMany
+    public function manga(): HasMany
     {
         return $this->hasMany(Manga::class, 'owner_id');
     }

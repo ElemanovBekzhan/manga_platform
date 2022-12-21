@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Manga extends Component
+class profile extends Component
 {
     /**
      * Create a new component instance.
@@ -25,6 +25,7 @@ class Manga extends Component
      */
     public function render(): View|string|Closure
     {
-        return view('components.manga');
+        $user = \Auth::user();
+        return view('components.profile', compact('user'));
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,6 +28,10 @@ class MainController extends Controller
         return view('home');
     }
 
+    public function index2(): Factory|View|Application
+    {
+        return view('profile');
+    }
 
     public function login(Request $request): View
     {
@@ -48,20 +54,43 @@ class MainController extends Controller
         return to_route('home');
     }
 
-    public function registration(): RedirectResponse
+    public function registration(Request $request): RedirectResponse
     {
+        #$ipAddress = $request->ip();
         $user = (new \App\Models\User)->create([
             'username'=>$this->request->get('username'),
             'email'=>$this->request->get('email'),
             'password'=>Hash::make($this->request->get('password'))
+
+        ]);
+        $user->information()->create([
+            'username'=>$request->get('username'),
+            #$ipAddress=>$request->get('ip_address')
         ]);
         \Auth::login($user);
         return to_route('home');
+
     }
 
     public function logout(): RedirectResponse
     {
         \Auth::logout();
         return to_route('auth.logout');
+    }
+
+
+    public function profile(): Factory|View|Application
+    {
+        return view('profile');
+    }
+
+    public function catalog(): Factory|View|Application
+    {
+        return view('home');
+    }
+
+    public function read(): Factory|View|Application
+    {
+        return view('read');
     }
 }
